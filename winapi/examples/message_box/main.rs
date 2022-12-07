@@ -6,6 +6,11 @@ fn main() {
     let body = b"Hello, world!\0";
 
     unsafe {
-        winuser::MessageBoxA(null_mut(), body.as_ptr().cast(), title.as_ptr().cast(), 0);
+        winuser::MessageBoxA(
+            null_mut(),
+            body.as_ptr().cast(),
+            title.as_ptr().cast(),
+            winuser::MB_OK,
+        );
     }
 }
