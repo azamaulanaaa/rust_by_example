@@ -1,16 +1,12 @@
-use std::ptr::null_mut;
-use winapi::um::winuser;
+use windows;
 
 fn main() {
-    let title = b"Horray!!!\0";
-    let body = b"Hello, world!\0";
-
     unsafe {
-        winuser::MessageBoxA(
-            null_mut(),
-            body.as_ptr().cast(),
-            title.as_ptr().cast(),
-            winuser::MB_OK,
+        windows::Win32::UI::WindowsAndMessaging::MessageBoxA(
+            None,
+            windows::s!("Hello, world!"),
+            windows::s!("Horray!!"),
+            windows::Win32::UI::WindowsAndMessaging::MB_OK,
         );
     }
 }
